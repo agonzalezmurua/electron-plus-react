@@ -4,6 +4,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const packageName = path.basename(__dirname);
 const rootPath = path.resolve(__dirname, "../..");
+const styledComponentsTransformer = require("typescript-plugin-styled-components").default();
 
 module.exports = {
   mode: "development",
@@ -22,6 +23,27 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
+        options: {
+          getCustomTransformers: () => ({
+            before: [styledComponentsTransformer],
+          }),
+        },
+      },
+      {
+        test: /\.css/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postCssOptions: {
+                ident: "postcss",
+                plugins: [require("tailwindcss"), require("autoprefixer")],
+              },
+            },
+          },
+        ],
       },
     ],
   },

@@ -1,8 +1,21 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import GlobalStyle from "./globals/styles";
+import { HashRouter, Route } from "react-router-dom";
 
-const app = document.getElementById("root");
+import Home from "./pages/home";
 
-const App = () => <h1>Hello World</h1>;
+const root = document.getElementById("root");
 
-ReactDOM.render(<App />, app);
+const App = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <HashRouter>
+        <Route path="/" exact component={Home} />
+      </HashRouter>
+    </>
+  );
+};
+
+ReactDOM.render(<App />, root);
