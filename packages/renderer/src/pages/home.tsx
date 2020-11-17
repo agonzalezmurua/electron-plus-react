@@ -1,5 +1,10 @@
 import React from "react";
+import ProductCard from '@components/organisms/ProductCard';
 
 export default function Home() {
-  return <h1>Home view</h1>
+  return (
+    <main>
+      <ProductCard />
+    </main>
+  );
 }

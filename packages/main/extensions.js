@@ -1,3 +1,6 @@
+/**
+ * Instals Development extenssions for debugging purposes
+ */
 function installExtensions() {
   if (process.env.NODE_ENV !== "development") {
     return;
