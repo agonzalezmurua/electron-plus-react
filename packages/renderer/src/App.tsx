@@ -2,7 +2,7 @@ import React from "react";
 import { HashRouter, Route } from "react-router-dom";
 
 import {GlobalStyles} from "twin.macro";
-import HomePage from "@pages/homeE";
+import HomePage from "@pages/Home";
 
 const App = () => {
   return (
