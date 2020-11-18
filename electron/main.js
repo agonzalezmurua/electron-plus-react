@@ -1,11 +1,14 @@
 const { app, BrowserWindow } = require("electron");
 const { installExtensions } = require("./extensions");
 const config = require("config");
+const consola = require("consola");
 
 try {
   // Hot reloading for main process, that means if any file inside main changes it triggers a full app reload
   require("electron-reloader")(module, { ignore: "app/**" });
-} catch (_) {}
+} catch (error) {
+  consola.error(error);
+}
 
 let window = null;
 
