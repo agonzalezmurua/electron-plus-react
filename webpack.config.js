@@ -4,12 +4,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const packageName = path.basename(__dirname);
 const rootPath = path.resolve(__dirname, "../..");
-const styledComponentsTransformer = require("typescript-plugin-styled-components").default();
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: path.resolve(__dirname, "src/app.tsx"),
+  entry: path.resolve(__dirname, "packages/renderer/src/index.tsx"),
   output: {
     filename: "index.js",
     path: path.resolve(rootPath, "dist", packageName),
@@ -23,42 +22,31 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: "ts-loader",
-        options: {
-          getCustomTransformers: () => ({
-            before: [styledComponentsTransformer],
-          }),
-        },
+        loader: "babel-loader",
       },
       {
         test: /\.css/,
         use: [
           "style-loader",
           "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                ident: "postcss",
-                plugins: [require("tailwindcss"), require("autoprefixer")],
-              },
-            },
-          },
         ],
       },
     ],
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
+    fallback: {
+      path: false,
+    },
     plugins: [
       new TsconfigPathsPlugin({
-        configFile: path.resolve(__dirname, "tsconfig.json"),
+        configFile: path.resolve(__dirname, "packages/renderer/tsconfig.json"),
       }),
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/template.html"),
+      template: path.resolve(__dirname, "packages/renderer/src/template.html"),
     }),
   ],
 };
