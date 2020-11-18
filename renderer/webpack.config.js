@@ -8,7 +8,7 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: path.resolve(__dirname, "packages/renderer/src/index.tsx"),
+  entry: path.resolve(__dirname, "src/index.tsx"),
   output: {
     filename: "index.js",
     path: path.resolve(rootPath, "dist", packageName),
@@ -22,14 +22,17 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-typescript", "@babel/preset-react"],
+            plugins: ["macros", "babel-plugin-styled-components"],
+          },
+        },
       },
       {
         test: /\.css/,
-        use: [
-          "style-loader",
-          "css-loader",
-        ],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -40,13 +43,13 @@ module.exports = {
     },
     plugins: [
       new TsconfigPathsPlugin({
-        configFile: path.resolve(__dirname, "packages/renderer/tsconfig.json"),
+        configFile: path.resolve(__dirname, "tsconfig.json"),
       }),
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "packages/renderer/src/template.html"),
+      template: path.resolve(__dirname, "src/template.html"),
     }),
   ],
 };

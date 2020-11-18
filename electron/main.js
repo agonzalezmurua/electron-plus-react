@@ -4,7 +4,7 @@ const config = require("config");
 
 try {
   // Hot reloading for main process, that means if any file inside main changes it triggers a full app reload
-  require("electron-reloader")(module, { ignore: "packages/renderer" });
+  require("electron-reloader")(module, { ignore: "renderer/**" });
 } catch (_) {}
 
 let window = null;
