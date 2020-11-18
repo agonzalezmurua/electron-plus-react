@@ -1,17 +1,19 @@
 import React from "react";
 import { HashRouter, Route } from "react-router-dom";
+import { GlobalStyles } from "twin.macro";
+import AppGlobalStyles from "@globals/AppGlobalStyle";
 
-import {GlobalStyles} from "twin.macro";
 import HomePage from "@pages/Home";
 
 const App = () => {
   return (
-    <>
+    <div tw="bg-gray-200 h-screen">
       <GlobalStyles />
+      <AppGlobalStyles />
       <HashRouter>
         <Route path="/" exact component={HomePage} />
       </HashRouter>
-    </>
+    </div>
   );
 };
 
