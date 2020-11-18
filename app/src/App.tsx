@@ -5,7 +5,7 @@ import AppGlobalStyles from "@globals/AppGlobalStyle";
 
 import HomePage from "@pages/Home";
 
-const App = () => {
+const App: React.FunctionComponent = () => {
   return (
     <div tw="bg-gray-200 h-screen">
       <GlobalStyles />

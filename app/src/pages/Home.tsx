@@ -2,7 +2,7 @@ import React from "react";
 import ProductCard from '@components/atoms/ProductCard';
 import 'twin.macro'
 
-const HomePage = () => {
+const HomePage: React.FunctionComponent = () => {
   return (
     <main tw="p-6">
       <h1>Products</h1>
