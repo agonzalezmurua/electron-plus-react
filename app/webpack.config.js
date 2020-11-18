@@ -16,7 +16,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(rootPath, "dist", packageName),
     compress: true,
-    port: config.get("renderer.dev.port"),
+    port: config.get("app.dev.port"),
   },
   module: {
     rules: [

@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "run-p build:*",
-    "build:renderer": "webpack --config renderer/webpack.config.js",
+    "build:app": "webpack --config app/webpack.config.js",
     "dev": "NODE_ENV=development run-p dev:**",
-    "dev:start:renderer": "webpack serve --config renderer/webpack.config.js",
-    "dev:start:electron": "node runtime-scripts/dev/wait-on-renderer && electron electron/main.js"
+    "dev:start:app": "webpack serve --config app/webpack.config.js",
+    "dev:start:electron": "node runtime-scripts/dev/wait-on-app && electron electron/main.js"
   },
   "author": "",
   "license": "ISC",
@@ -54,7 +54,7 @@
   },
   "babelMacros": {
     "twin": {
-      "config": "renderer/tailwind.config.js",
+      "config": "app/tailwind.config.js",
       "preset": "styled-components",
       "autoCssProp": true,
       "debugProp": true,

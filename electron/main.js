@@ -4,7 +4,7 @@ const config = require("config");
 
 try {
   // Hot reloading for main process, that means if any file inside main changes it triggers a full app reload
-  require("electron-reloader")(module, { ignore: "renderer/**" });
+  require("electron-reloader")(module, { ignore: "app/**" });
 } catch (_) {}
 
 let window = null;
@@ -21,7 +21,7 @@ function createWindow() {
   });
 
   window.setMenuBarVisibility(null);
-  window.loadURL(`http://localhost:${config.get("renderer.dev.port")}`); // (2) <- load react
+  window.loadURL(`http://localhost:${config.get("app.dev.port")}`); // (2) <- load react
   window.webContents.openDevTools();
   window.on("closed", () => {
     window = null; // (3) <- deference when window is closed

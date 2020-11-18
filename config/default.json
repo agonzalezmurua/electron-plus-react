@@ -1,6 +1,6 @@
 {
   "main": {},
-  "renderer": {
+  "app": {
     "dev": {
       "port": 3000
     }
