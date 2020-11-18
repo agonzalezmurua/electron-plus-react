@@ -2,14 +2,14 @@ import React from "react";
 import { HashRouter, Route } from "react-router-dom";
 
 import {GlobalStyles} from "twin.macro";
-import Home from "@pages/home";
+import HomePage from "@pages/homeE";
 
 const App = () => {
   return (
     <>
       <GlobalStyles />
       <HashRouter>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={HomePage} />
       </HashRouter>
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import ProductCard from '@components/atoms/ProductCard';
 import 'twin.macro'
 
-export default function Home() {
+const HomePage = () => {
   return (
     <main tw="p-6">
       <section tw="grid xl:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
@@ -14,3 +14,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default HomePage;
