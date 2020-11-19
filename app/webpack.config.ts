@@ -19,6 +19,7 @@ module.exports = {
     compress: true,
     port: config.get("app.dev.port"),
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
