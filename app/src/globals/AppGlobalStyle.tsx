@@ -1,8 +1,20 @@
-import tw from 'twin.macro'
-import {createGlobalStyle} from 'styled-components'
+import tw from "twin.macro";
+import { createGlobalStyle } from "styled-components";
 
 const AppGlobalStyle = createGlobalStyle`
+  html, body {
+    ${tw`text-gray-700 bg-gray-100`}
+  }
+
   h1, h2, h3, h4 ,h5 ,h6 {
+    ${tw`text-gray-900`}
+  }
+
+  p ~ p {
+    ${tw`mt-6`}
+  };
+
+  strong {
     ${tw`text-gray-900`}
   }
 

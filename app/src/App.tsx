@@ -5,18 +5,18 @@ import { GlobalStyles } from "twin.macro";
 import AppGlobalStyles from "@globals/AppGlobalStyle";
 
 import HomePage from "@pages/Home";
-import SideBar from "@components/organisms/SideBar";
+import NavBar from "@components/organisms/NavBar";
 
 const App: React.FunctionComponent = () => {
   return (
-    <div tw="bg-gray-500 h-screen">
+    <div tw="h-screen">
       <GlobalStyles />
       <AppGlobalStyles />
-      <SideBar>
+      <NavBar>
         <HashRouter>
           <Route path="/" exact component={HomePage} />
         </HashRouter>
-      </SideBar>
+      </NavBar>
     </div>
   );
 };
