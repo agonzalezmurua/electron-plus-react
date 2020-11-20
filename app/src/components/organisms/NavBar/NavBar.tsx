@@ -3,12 +3,10 @@ import tw, { styled } from "twin.macro";
 
 import UserInformation from "@components/molecules/UserInformation";
 
-import LightNingBolt from "@assets/icons/outline/lightning-bolt.svg";
-import BookOpen from "@assets/icons/outline/book-open.svg";
 import Search from "@assets/icons/outline/search.svg";
-import Bookmark from "@assets/icons/outline/bookmark.svg";
+import { NavigationList } from "./NavigationList";
 
-const NavigationItem = styled.li`
+export const NavigationItem = styled.li`
   ${tw`flex items-center space-x-4 hover:bg-gray-300 p-2 cursor-pointer rounded`}
   > svg {
     ${tw`h-6 w-6`}
@@ -24,7 +22,7 @@ const NavBar: React.FunctionComponent = (props) => {
         <UserInformation
           firstName="Agustin"
           lastName="Gonzalez"
-          role="Web UI"
+          role="Web developer"
         />
         {/* Search */}
         <section tw="flex bg-white rounded p-2 shadow items-center">
@@ -37,20 +35,7 @@ const NavBar: React.FunctionComponent = (props) => {
         </section>
         {/* Navigation */}
         <nav tw="space-y-4">
-          <ul tw="space-y-2">
-            <NavigationItem>
-              <LightNingBolt />
-              <span>Activity</span>
-            </NavigationItem>
-            <NavigationItem>
-              <BookOpen />
-              <span>Contacts</span>
-            </NavigationItem>
-            <NavigationItem>
-              <Bookmark />
-              <span>Bookmarks</span>
-            </NavigationItem>
-          </ul>
+          <NavigationList />
         </nav>
       </section>
       {/* Content */}
