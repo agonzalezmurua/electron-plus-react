@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const packageName = path.basename(__dirname);
 const rootPath = path.resolve(__dirname, "../..");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -19,7 +20,7 @@ module.exports = {
     compress: true,
     port: config.get("app.dev.port"),
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -35,6 +36,17 @@ module.exports = {
       {
         test: /\.css/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          name: "[path][name].[ext]",
+        },
+      },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
       },
     ],
   },
@@ -53,5 +65,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src/template.html"),
     }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 };
